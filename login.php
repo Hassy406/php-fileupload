@@ -12,7 +12,7 @@ if(isset($_POST['email'])){
         $_SESSION['current_user'] = $name;
         $_SESSION['user_id'] = $id;
         echo"<script>
-        window.alert('Hola');
+        window.alert('Hola 👋');
         window.location='./test.php';
         </script>";
     }else{

@@ -27,7 +27,13 @@ if(isset($_POST['upload'])){
     $image= $_FILES['image']['name'];
     $text=$_POST['text'];
 
-    $query="insert into images(image, text) values('$image', '$text')";
+    $user=$_SESSION['current_user'];
+    $sql="select * from hassy where name='$user'";
+    $result=mysqli_query($con,$sql);
+    $row= mysqli_fetch_array($result);
+    $id = $row['id'];
+
+    $query="insert into images(image, text, user_id) values('$image', '$text', '$id')";
     mysqli_query($con, $query);//stores the submitted data into the database table: upload
 
     //Now let move the uploaded image into the folder:images
