@@ -44,6 +44,7 @@ if(isset($_POST['upload'])){
 <html lang="en">
 <head>
     <title>UplodeHer</title>
+    <link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 <body>
 <?php
@@ -52,15 +53,25 @@ if(isset($_POST['upload'])){
     $result= mysqli_query($db,$query);
 
     while($row=mysqli_fetch_array($result)){
-        echo "<img width=100 height=100 src='images/".$row['image']."'>";
-        echo "<p>".$row['text']."</p>";
+        echo "<div id='img_div'>";
+            echo "<img width=100 height=100 src='images/".$row['image']."'>";
+            echo "<p>".$row['text']."</p>";
+        echo "</div>";
     }
 ?>
-    <form action="test.php" method="POST" enctype="multipart/form-data">
-       <input type="hidden" name="size" value="1000000">
-       <input type="file" name="image"><br>
-       <textarea name="text" cols="40" rows="4" placeholder="Describe your image...."></textarea><br>
-       <input type="submit" name="upload" value="Upload Image">
-    </form>
+    <div id="content">
+        <form action="test.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="size" value="1000000">
+            <div> 
+                <input type="file" name="image">
+            </div>
+            <div>
+                <textarea name="text" cols="20" rows="4" placeholder="Describe your image...."></textarea>
+            </div>
+            <div>
+                <input type="submit" name="upload" value="Upload Image">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
