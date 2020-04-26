@@ -53,18 +53,6 @@ if(isset($_POST['upload'])){
     <link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 <body>
-<?php
-    $db =mysqli_connect('localhost','root','','phpprac');
-    $query="select * from images";
-    $result= mysqli_query($db,$query);
-
-    while($row=mysqli_fetch_array($result)){
-        echo "<div id='img_div'>";
-            echo "<img width=100 height=100 src='images/".$row['image']."'>";
-            echo "<p>".$row['text']."</p>";
-        echo "</div>";
-    }
-?>
     <div id="content">
         <form action="test.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="size" value="1000000">
@@ -77,7 +65,22 @@ if(isset($_POST['upload'])){
             <div>
                 <input type="submit" name="upload" value="Upload Image">
             </div>
+            <div>
+                <a href="search.php"><input type="button" name="search" value="Search"></a>
+            </div>
         </form>
     </div>
+    <?php
+    $db =mysqli_connect('localhost','root','','phpprac');
+    $query="select * from images";
+    $result= mysqli_query($db,$query);
+
+    while($row=mysqli_fetch_array($result)){
+        echo "<div id='img_div'>";
+            echo "<img width=100 height=100 src='images/".$row['image']."'>";
+            echo "<p>".$row['text']."</p>";
+        echo "</div>";
+    }
+    ?>
 </body>
 </html>
