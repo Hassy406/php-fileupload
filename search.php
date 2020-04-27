@@ -25,13 +25,26 @@
         $result = mysqli_query($con,$query);
         $count = mysqli_num_rows($result);
         if($count==0){
-            echo "There was no search results!";
+            echo "There is no such images!";
         }else{
             while($row=mysqli_fetch_array($result)){
                 echo "<div id='img_div'>";
                 echo "<img width=100 height=100 src='images/".$row['image']."'>";
+                echo "<a href ='images/".$row['image']."'><h3>Click to Download Image</h3></a>";
                 echo "<p>".$row['text']."</p>";
                 echo "</div>";
+            }
+        }
+        
+        $query = "select * from files where text like '%$search%'";
+        $result = mysqli_query($con,$query);
+        $count = mysqli_num_rows($result);
+        if($count==0){
+            echo "There is no such Files!";
+        }else{
+            while($row=mysqli_fetch_array($result)){
+                echo "<a href ='files/".$row['file']."'><h3>".$row['name']."</h3></a>";
+                echo "<p>".$row['text']."</p>";
             }
         }
     }

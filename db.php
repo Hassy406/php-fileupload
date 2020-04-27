@@ -4,7 +4,7 @@ function open(){
     if(!$con){
         echo "Not connected to database";
     }
-    mysqli_select_db($con,"phpprac");
+    mysqli_select_db($con,"uploader");
     return $con;
 }
 function close($con){
