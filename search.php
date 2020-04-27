@@ -30,7 +30,7 @@
             while($row=mysqli_fetch_array($result)){
                 echo "<div id='img_div'>";
                 echo "<img width=100 height=100 src='images/".$row['image']."'>";
-                echo "<a href ='images/".$row['image']."'><h3>Click to Download Image</h3></a>";
+                echo "<a href ='images/".$row['image']."'><h3>".$row['name']."</h3></a>";
                 echo "<p>".$row['text']."</p>";
                 echo "</div>";
             }
