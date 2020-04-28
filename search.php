@@ -15,13 +15,23 @@
 
 
 <?php
+    session_start();
+    if(isset($_SESSION['current_user'])){
+        $user = $_SESSION['current_user'];
+        /*echo "<center><h1>Hello " . $user . "</h1>";
+        echo "<button class='btn btn-success'><a style='color: blue;' href='./index.php'>Logout</a></button></center>";*/
+    }else{
+        echo "<script>
+        window.location = './index.php';
+        </script>";
+    }
     include './db.php';
     $con =open();
     if(isset($_POST['search'])){
         $search = $_POST['search'];
         $search = preg_replace("#[^0-9a-z]#i","",$search);
 
-        $query = "select * from images where text like '%$search%'";
+        $query = "select * from images where text like '%$search%' or name like '%$search%'";
         $result = mysqli_query($con,$query);
         $count = mysqli_num_rows($result);
         if($count==0){
