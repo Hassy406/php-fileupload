@@ -13,7 +13,6 @@
 </body>
 </html>
 
-
 <?php
     session_start();
     if(isset($_SESSION['current_user'])){
@@ -30,7 +29,6 @@
     if(isset($_POST['search'])){
         $search = $_POST['search'];
         $search = preg_replace("#[^0-9a-z]#i","",$search);
-
         $query = "select * from images where text like '%$search%' or name like '%$search%'";
         $result = mysqli_query($con,$query);
         $count = mysqli_num_rows($result);
@@ -40,20 +38,22 @@
             while($row=mysqli_fetch_array($result)){
                 echo "<div id='img_div'>";
                 echo "<img width=100 height=100 src='images/".$row['image']."'>";
-                echo "<a href ='images/".$row['image']."'><h3>".$row['name']."</h3></a>";
+                echo "<a href ='images/".$row['image']."'><h3>".$row['name']."</h3></a>
+                <h4>Uploaded on ".$row['time']."</h4>";
                 echo "<p>".$row['text']."</p>";
                 echo "</div>";
             }
         }
         
-        $query = "select * from files where text like '%$search%'";
+        $query = "select * from files where text like '%$search%' or name like '%$search%'";
         $result = mysqli_query($con,$query);
         $count = mysqli_num_rows($result);
         if($count==0){
             echo "There is no such Files!";
         }else{
             while($row=mysqli_fetch_array($result)){
-                echo "<a href ='files/".$row['file']."'><h3>".$row['name']."</h3></a>";
+                echo "<a href ='files/".$row['file']."'><h3>".$row['name']."</h3></a>
+                <h4>Uploaded on ".$row['time']."</h4>";
                 echo "<p>".$row['text']."</p>";
             }
         }

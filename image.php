@@ -2,15 +2,14 @@
 session_start();
 if(isset($_SESSION['current_user'])){
     $user = $_SESSION['current_user'];
-    echo "<center><h1>Hello " . $user . "</h1>";
-    echo "<button class='btn btn-success'><a style='color: blue;' href='./index.php'>Logout</a></button></center>";
+    /*echo "<center><h1>Hello " . $user . "</h1>";
+    echo "<button class='btn btn-success'><a style='color: blue;' href='./index.php'>Logout</a></button></center>";*/
 }else{
     echo "<script>
     window.location = './index.php';
     </script>";
 }
 
-$msg = "";
 //if upload button is pressed
 if(isset($_POST['upload'])){
 
@@ -24,7 +23,6 @@ if(isset($_POST['upload'])){
     $image= $_FILES['image']['name'];
     $name= $_POST['name'];
     $text=$_POST['text'];
-
     /*$extensioni = strtolower(substr($image, strpos($image, '.')+1));
     $extensionf = strtolower(substr($file, strpos($file, '.')+1));*/
 
@@ -40,14 +38,14 @@ if(isset($_POST['upload'])){
 
         //Now let move the uploaded image or file into the folder:images or files
         if(move_uploaded_file($_FILES['image']['tmp_name'], $targeti)){
-            $msg= "uploaded successfully";
+            echo '<script>window.alert("Image Uploaded successfully")</script>';
             header("refresh:2; url= test.php");
         }else{
-            $msg= "Problem uploading 😓";
+            echo '<script>window.alert("Problem Uploading Image 😓")</script>';
             header("refresh:2; url= test.php");
         }
     }else{
-        $msg= "Unsupported Format ⚠";
+        echo '<script>window.alert("Unsupported Format ⚠")</script>';
         header("refresh:2; url= test.php");
     }/*
 }*/

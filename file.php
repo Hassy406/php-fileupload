@@ -2,15 +2,15 @@
 session_start();
 if(isset($_SESSION['current_user'])){
     $user = $_SESSION['current_user'];
-    echo "<center><h1>Hello " . $user . "</h1>";
-    echo "<button class='btn btn-success'><a style='color: blue;' href='./index.php'>Logout</a></button></center>";
+    /*echo "<center><h1>Hello " . $user . "</h1>";
+    echo "<button class='btn btn-success'><a style='color: blue;' href='./index.php'>Logout</a></button></center>";*/
+
 }else{
     echo "<script>
     window.location = './index.php';
     </script>";
 }
 
-$msg = "";
 //if upload button is pressed
 if(isset($_POST['upload'])){
 
@@ -40,14 +40,14 @@ if(isset($_POST['upload'])){
 
         //Now let move the uploaded image or file into the folder:images or files
         if(move_uploaded_file($_FILES['file']['tmp_name'], $targetf)){
-            $msg= "uploaded successfully";
+            echo '<script>window.alert("File uploaded successfully")</script>';
             header("refresh:2; url= test.php");
         }else{
-            $msg= "Problem uploading 😓";
+            echo '<script>window.alert("Problem uploading File 😓")</script>';
             header("refresh:2; url= test.php");
         }
     }else{
-        $msg= "Unsupported Format ⚠";
+        echo '<script>window.alert("Unsupported Format ⚠")</script>';
         header("refresh:2; url= test.php");
     }/*
 }*/
