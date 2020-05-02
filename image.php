@@ -2,8 +2,6 @@
 session_start();
 if(isset($_SESSION['current_user'])){
     $user = $_SESSION['current_user'];
-    /*echo "<center><h1>Hello " . $user . "</h1>";
-    echo "<button class='btn btn-success'><a style='color: blue;' href='./index.php'>Logout</a></button></center>";*/
 }else{
     echo "<script>
     window.location = './index.php';
@@ -31,9 +29,10 @@ if(isset($_POST['upload'])){
     $result=mysqli_query($con,$sql);
     $row= mysqli_fetch_array($result);
     $id = $row['id'];
+    $uname=$row['name'];
 
     /*if($extensioni=='jpg' || $extensioni=='jpeg' || $extensioni=='png' && $extensionf=='pdf' || $extensionf=='docx' || $extensionf=='doc'){*/
-        $query= "insert into images(image, name, text, user_id) values('$image', '$name', '$text', '$id')";
+        $query= "insert into images(image, name, text, user_id, uname) values('$image', '$name', '$text', '$id', '$uname')";
         mysqli_query($con, $query);//stores the submitted data into the database table: upload
 
         //Now let move the uploaded image or file into the folder:images or files
