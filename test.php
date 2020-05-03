@@ -227,7 +227,7 @@ if(isset($_SESSION['current_user'])){
                     <?php
                     }
                     ?>
-                </table>
+                </table><br>
             </center>
         </div>
         <div class="col-md-2">
@@ -282,7 +282,7 @@ if(isset($_SESSION['current_user'])){
                     <?php
                     }
                     ?>
-                </table>
+                </table><br>
             </center>
         </div>
     </div>

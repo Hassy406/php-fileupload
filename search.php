@@ -41,32 +41,6 @@ session_start();
         input[type=text]:focus {
             width: 50%;
         }
-        /*
-        .bar {
-            margin: 10px 10px 20px 10px;
-            max-width: 575px;
-            border-radius: 30px;
-            border: 1px solid #dcdcdc;
-        }
-
-        .bar:hover {
-            box-shadow: 1px 1px 8px 1px #dcdcdc;
-        }
-
-        .bar:focus-within {
-            box-shadow: 1px 1px 8px 1px #dcdcdc;
-            outline: none;
-        }
-
-        .searchbar {
-            height: 45px;
-            border: none;
-            width: 500px;
-            font-size: 16px;
-            outline: none;
-            background-color: transparent;
-            background-color: #343539; 
-        } */
 
         .button {
             display: inline-block;
@@ -94,8 +68,8 @@ session_start();
         }
 
         body {
-            /*background-color: #aea1ea;*/
-            background-image: url('assets/img/hero/h1_hero.png');
+            background-color: #aea1ea; 
+            /*background-image: url('assets/img/hero/h1_hero.png');*/
         }
 
         #content {
@@ -153,7 +127,7 @@ session_start();
                         href='./index.php'>Logout</a></button></center>
         </div>
     </div>
-
+    <br>
 </body>
 
 </html>
@@ -178,7 +152,8 @@ session_start();
             echo "<br><h3>There is no such images!</h3>";
         }else{
             while($row=mysqli_fetch_array($result)){
-                echo "<br><div id=content>";
+                echo "<div class=container>";
+                echo "<div id=content>";
                 echo "<div id='img_div'>";
                 /*echo "<img width=100 height=100 src='images/".$row['image']."'>";*/
                 echo "<a href ='images/".$row['image']."'><h2>".$row['name']."</h2></a>
@@ -186,6 +161,7 @@ session_start();
                 echo "<p>".$row['text']."</p>";
                 echo "</div>";
                 echo "</div>";
+                echo "</div><br>";
             }
         }
         
@@ -196,11 +172,13 @@ session_start();
             echo "<br><h3>There is no such Files!</h3>";
         }else{
             while($row=mysqli_fetch_array($result)){
-                echo "<br><div id=content>";
+                echo "<div class=container>";
+                echo "<div id=content>";
                 echo "<a href ='files/".$row['file']."'><h2>".$row['name']."</h2></a>";
                 echo "<h3>FIle uploaded by ".$row['uname']." on ".$row['time']."</h3>";
                 echo "<p>".$row['text']."</p>";
                 echo "</div>";
+                echo "</div><br>";
             }
         }
     }
