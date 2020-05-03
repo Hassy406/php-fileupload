@@ -18,8 +18,8 @@ if(isset($_SESSION['current_user'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/community/logo_transparent.png">
 
-    <link rel="stylesheet" type="text/css" href="style1.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -61,6 +61,9 @@ if(isset($_SESSION['current_user'])){
             border-radius: 5px;
             background-color: #b2ebf9;
             padding: 20px;
+            width: 60%;
+            margin: 20px auto;
+            border: 2px solid #ff5c97;
         }
 
         form {
@@ -78,7 +81,7 @@ if(isset($_SESSION['current_user'])){
             padding: 12px 20px;
             margin: 8px 0;
             display: inline-block;
-            border: 1px solid #ccc;
+            border: 1px solid #ff5c97;
             border-radius: 4px;
             box-sizing: border-box;
         }
@@ -89,7 +92,7 @@ if(isset($_SESSION['current_user'])){
             padding: 12px 20px;
             margin: 8px 0;
             display: inline-block;
-            border: 1px solid #ccc;
+            border: 1px solid #ff5c97;
             border-radius: 4px;
             box-sizing: border-box;
         }
@@ -130,7 +133,7 @@ if(isset($_SESSION['current_user'])){
 
         td,
         th {
-            border: 1px solid #CCC;
+            border: 2px solid #ff5c97;
             height: 30px;
         }
 
@@ -154,6 +157,7 @@ if(isset($_SESSION['current_user'])){
 
         body {
             background-color: #aea1ea;
+            /*background-image: url('assets/img/hero/h1_hero.png');*/
         }
     </style>
 </head>

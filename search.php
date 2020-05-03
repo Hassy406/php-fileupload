@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,11 +11,23 @@
     <title>Community</title>
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/community/logo_transparent.png">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
     <style>
-        input[type=text] {
+         input[type=text] {
             width: 150px;
             box-sizing: border-box;
-            border: 2px solid #ccc;
+            border: 2px solid #ff5c97;
             border-radius: 20px;
             font-size: 16px;
             background-color: white;
@@ -23,8 +39,34 @@
         }
 
         input[type=text]:focus {
-            width: 20%;
+            width: 50%;
         }
+        /*
+        .bar {
+            margin: 10px 10px 20px 10px;
+            max-width: 575px;
+            border-radius: 30px;
+            border: 1px solid #dcdcdc;
+        }
+
+        .bar:hover {
+            box-shadow: 1px 1px 8px 1px #dcdcdc;
+        }
+
+        .bar:focus-within {
+            box-shadow: 1px 1px 8px 1px #dcdcdc;
+            outline: none;
+        }
+
+        .searchbar {
+            height: 45px;
+            border: none;
+            width: 500px;
+            font-size: 16px;
+            outline: none;
+            background-color: transparent;
+            background-color: #343539; 
+        } */
 
         .button {
             display: inline-block;
@@ -52,12 +94,14 @@
         }
 
         body {
-            background-color: #aea1ea;
+            /*background-color: #aea1ea;*/
+            background-image: url('assets/img/hero/h1_hero.png');
         }
 
         #content {
+            border: 1px solid #ec4683;
             border-radius: 5px;
-            background-color: #b2ebf9;
+            /*background-color: #b2ebf9;*/
             padding-top: 1px;
             padding-left: 10px;
             padding-bottom: 1px;
@@ -89,21 +133,37 @@
 </head>
 
 <body>
-    <form action="search.php" method="post">
-        <center><input type="text" name="search" placeholder="Search....." required="">
-            <input class="button" type="submit" value="🔎"><br></center>
-    </form>
+    <div class="row">
+        <div class="col-2">
+            <center><img width="100" height="100" src="assets/img/community/logo_transparent.png" alt=""></center>
+        </div>
+        <div class="col-8 bar">
+            <center style="margin-top: 30px;">
+                <form action="search.php" method="post">
+                    <input class="searchbar" type="text" name="search" placeholder="Search....." required="">
+                    <input class="button" type="submit" value="🔎">
+                </form>
+            </center>
+        </div>
+        <!--<div class="col-1">
+            <center><input class="button" type="submit" value="🔎"></center>
+        </div>-->
+        <div class="col-2">
+            <center style="margin-top: 30px;"><button class='button'><a style='text-decoration: none; color: white;'
+                        href='./index.php'>Logout</a></button></center>
+        </div>
+    </div>
+
 </body>
 
 </html>
 
 <?php
-    session_start();
     if(isset($_SESSION['current_user'])){
         $user = $_SESSION['current_user'];
     }else{
         echo "<script>
-        window.location = './index.php';
+        window.location = './search.php';
         </script>";
     }
     include './db.php';
