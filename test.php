@@ -2,7 +2,7 @@
 session_start();
 if(isset($_SESSION['current_user'])){
     $user = $_SESSION['current_user'];
-    echo "<center style='margin-top: 20px;'><h1>Hello " . $user . "</h1>";
+    echo "<center style='margin-top: 20px;'><h1>Welcome " . $user . "</h1>";
     echo "<button class='button'><a style='text-decoration: none; color: white;' href='./index.php'>Logout</a></button></center>";
 }else{
     echo "<script>
@@ -140,7 +140,7 @@ if(isset($_SESSION['current_user'])){
         /* Make cells a bit taller */
 
         th {
-            background: #F3F3F3;
+            background: #aaaaaa;
             /* Light grey background */
             font-weight: bold;
             /* Make sure they're bold */
@@ -158,6 +158,24 @@ if(isset($_SESSION['current_user'])){
         body {
             background-color: #aea1ea;
             /*background-image: url('assets/img/hero/h1_hero.png');*/
+        }
+        
+        .head{
+            display: flex;
+            align-items: center;
+            justify-content:space-evenly;
+            width: 100%;
+        }
+        
+        .difference{
+            display: flex;
+            justify-content:space-evenly;
+        }
+
+        .line{
+            border-bottom: 2px solid #ff5c97;
+            width: 85%;
+            text-align: center;
         }
     </style>
 </head>
@@ -180,6 +198,14 @@ if(isset($_SESSION['current_user'])){
     $rowcount2 = mysqli_num_rows($result2);
     
     ?>
+    <!--<br>
+     <div class="head">
+            <h1>Welcome <?php/* echo $_SESSION['current_user']; */?></h1>
+            <a href="index.php"><h3 class="button">Logout</h3></a>
+        </div>
+        <div class="difference">
+            <div class="line"></div>
+        </div>-->
     <div class="row">
         <div class="col-md-5">
             <div id="content">

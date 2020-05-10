@@ -39,7 +39,7 @@ session_start();
         }
 
         input[type=text]:focus {
-            width: 50%;
+            width: 70%;
         }
 
         .button {
@@ -103,15 +103,28 @@ session_start();
             margin-bottom: 15px;
             font-weight: normal
         }
+
+        .difference{
+            display: flex;
+            justify-content:space-evenly;
+        }
+
+        .line{
+            border-bottom: 2px solid #ff5c97;
+            width: 100%;
+            text-align: center;
+        }
+
     </style>
 </head>
 
 <body>
+    <div class="container">
     <div class="row">
         <div class="col-2">
             <center><img width="100" height="100" src="assets/img/community/logo_transparent.png" alt=""></center>
         </div>
-        <div class="col-8 bar">
+        <div class="col-6 bar">
             <center style="margin-top: 30px;">
                 <form action="search.php" method="post">
                     <input class="searchbar" type="text" name="search" placeholder="Search....." required="">
@@ -119,15 +132,20 @@ session_start();
                 </form>
             </center>
         </div>
-        <!--<div class="col-1">
-            <center><input class="button" type="submit" value="🔎"></center>
-        </div>-->
+        <div class="col-2">
+        <center style="margin-top: 30px;"><button class='button'><a style='text-decoration: none; color: white;'
+                        href='./test.php'>Upload</a></button></center>
+        </div>
         <div class="col-2">
             <center style="margin-top: 30px;"><button class='button'><a style='text-decoration: none; color: white;'
                         href='./index.php'>Logout</a></button></center>
         </div>
     </div>
+    <div class="difference">
+            <div class="line"></div>
+        </div>
     <br>
+    </div>
 </body>
 
 </html>
@@ -156,7 +174,7 @@ session_start();
                 echo "<div id=content>";
                 echo "<div id='img_div'>";
                 /*echo "<img width=100 height=100 src='images/".$row['image']."'>";*/
-                echo "<a href ='images/".$row['image']."'><h2>".$row['name']."</h2></a>
+                echo "<a href ='images/".$row['image']."'><h1>".$row['name']."</h1></a>
                 <h3>Image uploaded by ".$row['uname']." on ".$row['time']."</h3>";
                 echo "<p>".$row['text']."</p>";
                 echo "</div>";
@@ -174,8 +192,8 @@ session_start();
             while($row=mysqli_fetch_array($result)){
                 echo "<div class=container>";
                 echo "<div id=content>";
-                echo "<a href ='files/".$row['file']."'><h2>".$row['name']."</h2></a>";
-                echo "<h3>FIle uploaded by ".$row['uname']." on ".$row['time']."</h3>";
+                echo "<a href ='files/".$row['file']."'><h1>".$row['name']."</h1></a>";
+                echo "<h3>File uploaded by ".$row['uname']." on ".$row['time']."</h3>";
                 echo "<p>".$row['text']."</p>";
                 echo "</div>";
                 echo "</div><br>";
